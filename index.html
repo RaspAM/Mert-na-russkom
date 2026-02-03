@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объявления Мерсин</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">Объявления Мерсин</div>
+
+    <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="categories.html">Категории</a>
+        <a href="create.html">Подать объявление</a>
+        <a href="profile.html">Личный кабинет</a>
+    </nav>
+</header>
+
+<section class="search-block">
+    <input type="text" id="searchInput" placeholder="Поиск по объявлениям...">
+    <button id="searchBtn">Найти</button>
+</section>
+
+<section class="categories">
+    <h2>Категории</h2>
+
+    <div class="category-grid">
+
+        <a class="cat-item" href="category.html?type=sale">Продажа</a>
+        <a class="cat-item" href="category.html?type=services">Услуги</a>
+        <a class="cat-item" href="category.html?type=repair">Ремонт</a>
+        <a class="cat-item" href="category.html?type=private">Частные объявления</a>
+
+    </div>
+</section>
+
+<section class="latest-ads">
+    <h2>Свежие объявления</h2>
+    <div id="adsContainer" class="ads-grid">
+        <!-- Объявления будут подгружаться сюда через JS -->
+    </div>
+</section>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
