@@ -148,3 +148,30 @@ body {
 .ad-btn:hover {
     background: #a4f55a;
 }
+.form-section {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.create-form input,
+.create-form select,
+.create-form textarea {
+    padding: 12px;
+    border: 2px solid #0d1b4c;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #ffffff;
+}
+
+.result-message {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #0d1b4c;
+}
