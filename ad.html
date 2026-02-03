@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объявление</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">Объявления Мерсин</div>
+
+    <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="categories.html">Категории</a>
+        <a href="create.html">Подать объявление</a>
+        <a href="login.html">Вход и регистрация</a>
+        <a href="profile.html">Личный кабинет</a>
+    </nav>
+</header>
+
+<section class="ad-page">
+    <div id="adContainer" class="ad-full"></div>
+</section>
+
+<script src="assets/js/app.js"></script>
+
+<script>
+/* Получаем ID объявления */
+const urlParams = new URLSearchParams(window.location.search);
+const adId = parseInt(urlParams.get("id"));
+
+/* Находим объявление */
+const ad = ads.find(item => item.id === adId);
+
+/* Контейнер */
+const container = document.getElementById("adContainer");
+
+/* Если объявление не найдено */
+if (!ad) {
+    container.innerHTML = "<p>Объявление не найдено.</p>";
+} else {
+    container.innerHTML = `
+        <div class="ad-full-card">
+            <img class="ad-full-img" src="${ad.image}" alt="${ad.title}">
+            
+            <h2 class="ad-full-title">${ad.title}</h2>
+            <div class="ad-full-price">${ad.price}</div>
+
+            <p class="ad-full-desc">${ad.description}</p>
+
+            <a href="javascript:history.back()" class="ad-btn">Назад</a>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
