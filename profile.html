@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">Объявления Мерсин</div>
+
+    <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="categories.html">Категории</a>
+        <a href="create.html">Подать объявление</a>
+        <a href="profile.html">Личный кабинет</a>
+    </nav>
+</header>
+
+<section class="profile-section">
+    <h2>Личный кабинет</h2>
+
+    <div class="profile-info">
+        <p><strong>Имя:</strong> Гость</p>
+        <p><strong>Email:</strong> demo@example.com</p>
+        <p><strong>Ваши объявления:</strong></p>
+    </div>
+
+    <div id="myAdsContainer" class="ads-grid">
+        <!-- Мои объявления будут подгружаться сюда -->
+    </div>
+</section>
+
+<script src="assets/js/app.js"></script>
+
+<script>
+/* 
+   В реальном проекте здесь будет авторизация.
+   Пока просто показываем объявления, где user_id = 1.
+*/
+
+const myUserId = 1; // временный пользователь
+
+const myAds = ads.filter(ad => ad.user_id === myUserId);
+
+/* Если нет объявлений */
+if (myAds.length === 0) {
+    document.getElementById("myAdsContainer").innerHTML =
+        "<p>У вас пока нет объявлений.</p>";
+} else {
+    renderAds(myAds);
+}
+</script>
+
+</body>
+</html>
