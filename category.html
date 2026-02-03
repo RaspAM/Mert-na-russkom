@@ -31,21 +31,51 @@
 <script src="assets/js/app.js"></script>
 
 <script>
+/* Получаем параметр из URL */
 const urlParams = new URLSearchParams(window.location.search);
 const categoryType = urlParams.get("type");
 
+/* Человеческие названия */
 const categoryNames = {
-    sport: "Спорт",
-    electronics: "Электроника",
+    sale: "Продажа",
     services: "Услуги",
+    repair: "Ремонт",
+    private: "Частные объявления",
+
+    clothes: "Одежда, обувь, аксессуары",
+    home: "Для дома и быта",
+    sport: "Спорт",
+    auto: "Авто‑мото",
+    electronics: "Электроника",
+
+    beauty: "Красота и здоровье",
+    hair: "Парикмахер",
+    cosmetology: "Косметология",
+    epilation: "Эпиляция",
+    massage: "Массаж",
+
+    windows: "Остекление",
+    painting: "Покраска",
+    floors: "Полы",
+    plumbing: "Сантехника",
+    ac: "Кондиционеры",
+    electric: "Электрика",
+
+    transfer: "Трансфер и попутчики",
+    nanny: "Няня",
+    health: "Здоровье",
+    tours: "Экскурсии",
     pets: "Животные"
 };
 
+/* Заголовок */
 document.getElementById("categoryTitle").innerText =
     categoryNames[categoryType] || "Категория";
 
-const filteredAds = ads.filter(ad => ad.category === categoryType);
+/* Получаем объявления через app.js */
+const filteredAds = getAdsByCategory(categoryType);
 
+/* Отображаем */
 renderAds(filteredAds);
 </script>
 
