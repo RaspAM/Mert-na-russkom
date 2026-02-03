@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категория</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">Объявления Мерсин</div>
+
+    <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="categories.html">Категории</a>
+        <a href="create.html">Подать объявление</a>
+        <a href="profile.html">Личный кабинет</a>
+    </nav>
+</header>
+
+<section class="category-header">
+    <h2 id="categoryTitle">Категория</h2>
+</section>
+
+<section class="latest-ads">
+    <div id="adsContainer" class="ads-grid">
+        <!-- Объявления будут подгружаться сюда -->
+    </div>
+</section>
+
+<script src="assets/js/app.js"></script>
+
+<script>
+/* Получаем параметр из URL */
+const urlParams = new URLSearchParams(window.location.search);
+const categoryType = urlParams.get("type");
+
+/* Названия категорий для отображения */
+const categoryNames = {
+    sale: "Продажа",
+    services: "Услуги",
+    repair: "Ремонт",
+    private: "Частные объявления",
+
+    clothes: "Одежда, обувь, аксессуары",
+    home: "Для дома и быта",
+    sport: "Спорт",
+    auto: "Авто‑мото",
+    electronics: "Электроника",
+
+    beauty: "Красота и здоровье",
+    hair: "Парикмахер",
+    cosmetology: "Косметология",
+    epilation: "Эпиляция",
+    massage: "Массаж",
+
+    windows: "Остекление",
+    painting: "Покраска",
+    floors: "Полы",
+    plumbing: "Сантехника",
+    ac: "Кондиционеры",
+    electric: "Электрика",
+
+    transfer: "Трансфер и попутчики",
+    nanny: "Няня",
+    health: "Здоровье",
+    tours: "Экскурсии",
+    pets: "Животные"
+};
+
+/* Устанавливаем заголовок */
+document.getElementById("categoryTitle").innerText =
+    categoryNames[categoryType] || "Категория";
+
+/* Фильтруем объявления */
+const filteredAds = ads.filter(ad => ad.category === categoryType);
+
+/* Показываем объявления */
+renderAds(filteredAds);
+</script>
+
+</body>
+</html>
