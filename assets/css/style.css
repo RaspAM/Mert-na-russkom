@@ -1,0 +1,150 @@
+/* === БАЗОВЫЕ СТИЛИ === */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f5ef; /* мягкий молочный фон */
+    color: #0d1b4c; /* тёмно-синий текст */
+}
+
+/* === ШАПКА === */
+
+.header {
+    background: #ffffff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e0ded7;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0d1b4c;
+}
+
+.nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #0d1b4c;
+    font-weight: 500;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* === ПОИСК === */
+
+.search-block {
+    padding: 20px;
+    text-align: center;
+}
+
+#searchInput {
+    width: 60%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #0d1b4c;
+    border-radius: 6px;
+}
+
+#searchBtn {
+    padding: 12px 20px;
+    margin-left: 10px;
+    background: #b7ff6a; /* салатовая кнопка */
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0d1b4c;
+    cursor: pointer;
+}
+
+#searchBtn:hover {
+    background: #a4f55a;
+}
+
+/* === КАТЕГОРИИ === */
+
+.categories {
+    padding: 20px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.cat-item {
+    display: block;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: #0d1b4c;
+    font-weight: bold;
+    border: 2px solid #e0ded7;
+}
+
+.cat-item:hover {
+    background: #b7ff6a;
+    border-color: #0d1b4c;
+}
+
+/* === ОБЪЯВЛЕНИЯ === */
+
+.latest-ads {
+    padding: 20px;
+}
+
+.ads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.ad-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    border: 2px solid #e0ded7;
+}
+
+.ad-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.ad-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.ad-price {
+    color: #0d1b4c;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.ad-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px;
+    background: #b7ff6a;
+    color: #0d1b4c;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.ad-btn:hover {
+    background: #a4f55a;
+}
