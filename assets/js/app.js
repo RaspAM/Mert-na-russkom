@@ -1,7 +1,4 @@
-/* ============================
-   ДАННЫЕ (временно фейковые)
-   Потом заменим на API
-============================ */
+/* = ДАННЫЕ (временно фейковые) замена на API! = */
 
 const ads = [
     {
@@ -26,7 +23,7 @@ const ads = [
         price: "300 TL",
         image: "https://via.placeholder.com/300x200?text=Massage",
         description: "Профессиональный массаж, выезд",
-        category: "services"
+        category: "massage"
     },
     {
         id: 4,
@@ -39,6 +36,32 @@ const ads = [
 ];
 
 /* ============================
+   ГРУППЫ КАТЕГОРИЙ (разделы)
+============================ */
+
+const categoryGroups = {
+    sale: ["clothes", "home", "sport", "auto", "electronics"],
+    services: ["beauty", "hair", "cosmetology", "epilation", "massage"],
+    repair: ["windows", "painting", "floors", "plumbing", "ac", "electric"],
+    private: ["transfer", "nanny", "health", "tours", "pets"]
+};
+
+/* ============================
+   ФИЛЬТРАЦИЯ ПО КАТЕГОРИИ ИЛИ РАЗДЕЛУ
+============================ */
+
+function getAdsByCategory(type) {
+
+    // Если это раздел (sale, services, repair, private)
+    if (categoryGroups[type]) {
+        return ads.filter(ad => categoryGroups[type].includes(ad.category));
+    }
+
+    // Если это подкатегория (sport, pets, electronics…)
+    return ads.filter(ad => ad.category === type);
+}
+
+/* ============================
    ОТОБРАЖЕНИЕ ОБЪЯВЛЕНИЙ
 ============================ */
 
@@ -48,7 +71,6 @@ function renderAds(list) {
 
     container.innerHTML = "";
 
-    // Если объявлений нет
     if (list.length === 0) {
         container.innerHTML = "<p>Объявлений в этой категории пока нет.</p>";
         return;
@@ -89,7 +111,10 @@ function searchAds() {
 ============================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-    renderAds(ads);
+    // На главной странице показываем все объявления
+    if (document.getElementById("adsContainer")) {
+        renderAds(ads);
+    }
 
     const searchBtn = document.getElementById("searchBtn");
     if (searchBtn) {
