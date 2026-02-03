@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и регистрация</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">Объявления Мерсин</div>
+
+    <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="categories.html">Категории</a>
+        <a href="create.html">Подать объявление</a>
+        <a href="login.html" class="active">Вход и регистрация</a>
+        <a href="profile.html">Личный кабинет</a>
+    </nav>
+</header>
+
+<section class="auth-section">
+    <h2>Вход и регистрация</h2>
+
+    <div class="auth-box">
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Введите email">
+
+        <label>Пароль</label>
+        <input type="password" id="password" placeholder="Введите пароль">
+
+        <button class="auth-btn" id="loginBtn">Войти</button>
+
+        <div class="auth-divider">или</div>
+
+        <button class="auth-btn secondary" id="registerBtn">Создать аккаунт</button>
+
+    </div>
+</section>
+
+<script>
+document.getElementById("loginBtn").addEventListener("click", () => {
+    alert("Функция входа будет подключена позже");
+});
+
+document.getElementById("registerBtn").addEventListener("click", () => {
+    alert("Регистрация будет подключена позже");
+});
+</script>
+
+</body>
+</html>
