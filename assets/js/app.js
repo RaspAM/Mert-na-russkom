@@ -27,6 +27,14 @@ const ads = [
         image: "https://via.placeholder.com/300x200?text=Massage",
         description: "Профессиональный массаж, выезд",
         category: "services"
+    },
+    {
+        id: 4,
+        title: "Корм для собак",
+        price: "150 TL",
+        image: "https://via.placeholder.com/300x200?text=Pets",
+        description: "Сухой корм, 10 кг",
+        category: "pets"
     }
 ];
 
@@ -39,6 +47,12 @@ function renderAds(list) {
     if (!container) return;
 
     container.innerHTML = "";
+
+    // Если объявлений нет
+    if (list.length === 0) {
+        container.innerHTML = "<p>Объявлений в этой категории пока нет.</p>";
+        return;
+    }
 
     list.forEach(ad => {
         const card = document.createElement("div");
