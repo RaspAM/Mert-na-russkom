@@ -32,13 +32,13 @@ const ads = [
         image: "https://via.placeholder.com/300x200?text=Pets",
         description: "Сухой корм, 10 кг",
         category: "pets"
-    }
+    },
     {
         id: 5,
-        title: "SAP Decathlon 10 1/2",
-        price: "950 TL",
-        image: "https://via.placeholder.com/300x200?text=SAP+Decathlon",
-        description: "Спортивная обувь SAP Decathlon, размер 10 1/2",
+        title: "SUP Decathlon 10 1/2",
+        price: "1950 TL",
+        image: "https://via.placeholder.com/300x200?text=SUP+Decathlon",
+        description: " Б/У надувной SUP Decathlon, размер 10 1/2",
         category: "sport"
     },
     {
@@ -52,7 +52,7 @@ const ads = [
     {
         id: 7,
         title: "Косметолог с выездом на дом",
-        price: "500 TL",
+        price: "договорная",
         image: "https://via.placeholder.com/300x200?text=Cosmetology",
         description: "Макияж; окраска бровей и ресниц; коррекция формы бровей; наращивание ресниц; завивка ресниц; косметические маски; эстетический СПА‑массаж",
         category: "cosmetology"
