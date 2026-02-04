@@ -16,6 +16,7 @@
         <a href="index.html">Главная</a>
         <a href="categories.html">Категории</a>
         <a href="create.html">Подать объявление</a>
+        <a href="login.html">Вход и регистрация</a>
         <a href="profile.html">Личный кабинет</a>
     </nav>
 </header>
@@ -31,20 +32,15 @@
 <script src="assets/js/app.js"></script>
 
 <script>
-/* Получаем параметр из URL */
+/* Получаем категорию из URL */
 const urlParams = new URLSearchParams(window.location.search);
 const categoryType = urlParams.get("type");
 
-/* Человеческие названия */
+/* Человеческие названия категорий */
 const categoryNames = {
-    sale: "Продажа",
-    services: "Услуги",
-    repair: "Ремонт",
-    private: "Частные объявления",
-
     clothes: "Одежда, обувь, аксессуары",
     home: "Для дома и быта",
-    sport: "Спорт",
+    sport: "Хобби и спорт",
     auto: "Авто‑мото",
     electronics: "Электроника",
 
@@ -68,14 +64,14 @@ const categoryNames = {
     pets: "Животные"
 };
 
-/* Заголовок */
+/* Устанавливаем заголовок */
 document.getElementById("categoryTitle").innerText =
     categoryNames[categoryType] || "Категория";
 
 /* Получаем объявления через app.js */
 const filteredAds = getAdsByCategory(categoryType);
 
-/* Отображаем */
+/* Отображаем объявления */
 renderAds(filteredAds);
 </script>
 
