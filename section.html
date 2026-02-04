@@ -29,7 +29,7 @@
     <div id="sectionCategories" class="category-grid"></div>
 </section>
 
-<!-- ВАЖНО: app.js должен быть ПЕРЕД нашим скриптом -->
+<!-- ВАЖНО: app.js должен быть подключён ПЕРЕД нашим скриптом -->
 <script src="assets/js/app.js"></script>
 
 <script>
@@ -73,7 +73,7 @@ const categoryNames = {
     pets: "Животные"
 };
 
-/* Заголовок */
+/* Устанавливаем заголовок */
 document.getElementById("sectionTitle").innerText =
     sectionNames[sectionType] || "Раздел";
 
