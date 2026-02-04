@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Категории</title>
+    <title>Все категории</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -14,57 +14,90 @@
 
     <nav class="nav">
         <a href="index.html">Главная</a>
-        <a href="categories.html">Категории</a>
+        <a href="categories.html" class="active">Категории</a>
         <a href="create.html">Подать объявление</a>
+        <a href="login.html">Вход и регистрация</a>
         <a href="profile.html">Личный кабинет</a>
     </nav>
 </header>
 
+<section class="category-header">
+    <h2>Все категории</h2>
+</section>
+
 <section class="categories">
-    <h2>Категории</h2>
 
-    <!-- ======= ПРОДАЖА ======= -->
-    <h3>Продажа</h3>
-    <div class="category-grid">
-        <a class="cat-item" href="category.html?type=clothes">Одежда, обувь, аксессуары</a>
-        <a class="cat-item" href="category.html?type=home">Для дома и быта</a>
-        <a class="cat-item" href="category.html?type=sport">Спорт</a>
-        <a class="cat-item" href="category.html?type=auto">Авто‑мото</a>
-        <a class="cat-item" href="category.html?type=electronics">Электроника</a>
-    </div>
-
-    <!-- ======= УСЛУГИ ======= -->
-    <h3>Услуги</h3>
-    <div class="category-grid">
-        <a class="cat-item" href="category.html?type=beauty">Красота и здоровье</a>
-        <a class="cat-item" href="category.html?type=hair">Парикмахер</a>
-        <a class="cat-item" href="category.html?type=cosmetology">Косметология</a>
-        <a class="cat-item" href="category.html?type=epilation">Эпиляция</a>
-        <a class="cat-item" href="category.html?type=massage">Массаж</a>
-    </div>
-
-    <!-- ======= РЕМОНТ ======= -->
-    <h3>Ремонт</h3>
-    <div class="category-grid">
-        <a class="cat-item" href="category.html?type=windows">Остекление</a>
-        <a class="cat-item" href="category.html?type=painting">Покраска</a>
-        <a class="cat-item" href="category.html?type=floors">Полы</a>
-        <a class="cat-item" href="category.html?type=plumbing">Сантехника</a>
-        <a class="cat-item" href="category.html?type=ac">Кондиционеры</a>
-        <a class="cat-item" href="category.html?type=electric">Электрика</a>
-    </div>
-
-    <!-- ======= ЧАСТНЫЕ ОБЪЯВЛЕНИЯ ======= -->
-    <h3>Частные объявления</h3>
-    <div class="category-grid">
-        <a class="cat-item" href="category.html?type=transfer">Трансфер и попутчики</a>
-        <a class="cat-item" href="category.html?type=nanny">Няня</a>
-        <a class="cat-item" href="category.html?type=health">Здоровье</a>
-        <a class="cat-item" href="category.html?type=tours">Экскурсии</a>
-        <a class="cat-item" href="category.html?type=pets">Животные</a>
-    </div>
+    <!-- Контейнер для всех категорий -->
+    <div id="allCategories" class="category-sections"></div>
 
 </section>
+
+<script src="assets/js/app.js"></script>
+
+<script>
+/* Человеческие названия разделов */
+const sectionNames = {
+    sale: "Продажа",
+    services: "Услуги",
+    repair: "Ремонт",
+    private: "Частные объявления"
+};
+
+/* Человеческие названия категорий */
+const categoryNames = {
+    clothes: "Одежда, обувь, аксессуары",
+    home: "Для дома и быта",
+    sport: "Хобби и спорт",
+    auto: "Авто‑мото",
+    electronics: "Электроника",
+
+    beauty: "Красота и здоровье",
+    hair: "Парикмахер",
+    cosmetology: "Косметология",
+    epilation: "Эпиляция",
+    massage: "Массаж",
+
+    windows: "Остекление",
+    painting: "Покраска",
+    floors: "Полы",
+    plumbing: "Сантехника",
+    ac: "Кондиционеры",
+    electric: "Электрика",
+
+    transfer: "Трансфер и попутчики",
+    nanny: "Няня",
+    health: "Здоровье",
+    tours: "Экскурсии",
+    pets: "Животные"
+};
+
+/* Контейнер */
+const container = document.getElementById("allCategories");
+
+/* Генерация списка категорий по разделам */
+Object.keys(categoryGroups).forEach(section => {
+
+    const block = document.createElement("div");
+    block.className = "category-block";
+
+    block.innerHTML = `
+        <h3 class="category-section-title">${sectionNames[section]}</h3>
+        <div class="category-grid" id="grid-${section}"></div>
+    `;
+
+    container.appendChild(block);
+
+    const grid = document.getElementById(`grid-${section}`);
+
+    categoryGroups[section].forEach(cat => {
+        const link = document.createElement("a");
+        link.className = "cat-item";
+        link.href = `category.html?type=${cat}`;
+        link.innerText = categoryNames[cat] || cat;
+        grid.appendChild(link);
+    });
+});
+</script>
 
 </body>
 </html>
