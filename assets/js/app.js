@@ -7,7 +7,8 @@ const ads = [
         price: "4500 TL",
         image: "https://via.placeholder.com/300x200?text=Bike",
         description: "Отличное состояние, почти новый",
-        category: "sport"
+        category: "sport",
+        section: "sale"
     },
     {
         id: 2,
@@ -15,7 +16,8 @@ const ads = [
         price: "8500 TL",
         image: "https://via.placeholder.com/300x200?text=Laptop",
         description: "i5, 8GB RAM, SSD",
-        category: "electronics"
+        category: "electronics",
+        section: "sale"
     },
     {
         id: 3,
@@ -23,7 +25,8 @@ const ads = [
         price: "300 TL",
         image: "https://via.placeholder.com/300x200?text=Massage",
         description: "Профессиональный массаж, выезд",
-        category: "massage"
+        category: "massage",
+        section: "services"
     },
     {
         id: 4,
@@ -31,15 +34,17 @@ const ads = [
         price: "150 TL",
         image: "https://via.placeholder.com/300x200?text=Pets",
         description: "Сухой корм, 10 кг",
-        category: "pets"
+        category: "pets",
+        section: "private"
     },
     {
         id: 5,
         title: "SUP Decathlon 10 1/2",
-        price: "1950 TL",
-        image: "https://via.placeholder.com/300x200?text=SUP+Decathlon",
-        description: " Б/У надувной SUP Decathlon, размер 10 1/2",
-        category: "sport"
+        price: "950 TL",
+        image: "https://via.placeholder.com/300x200?text=SUP",
+        description: "надувной Б\У SAP Decathlon, размер 10 1/2",
+        category: "sport",
+        section: "sale"
     },
     {
         id: 6,
@@ -47,19 +52,21 @@ const ads = [
         price: "485000 TL",
         image: "https://via.placeholder.com/300x200?text=FIAT+DOBLO+2022",
         description: "FIAT DOBLO Trekking, модель 2022 года, отличное состояние",
-        category: "auto"
+        category: "auto",
+        section: "sale"
     },
     {
         id: 7,
         title: "Косметолог с выездом на дом",
-        price: "договорная",
+        price: "500 TL",
         image: "https://via.placeholder.com/300x200?text=Cosmetology",
         description: "Макияж; окраска бровей и ресниц; коррекция формы бровей; наращивание ресниц; завивка ресниц; косметические маски; эстетический СПА‑массаж",
-        category: "cosmetology"
+        category: "cosmetology",
+        section: "services"
     }
 ];
 
-/* ===   ГРУППЫ КАТЕГОРИЙ (разделы)==== */
+/* === ГРУППЫ КАТЕГОРИЙ (разделы) === */
 
 const categoryGroups = {
     sale: ["clothes", "home", "sport", "auto", "electronics"],
@@ -76,7 +83,7 @@ function getAdsByCategory(type) {
 
     // Если это раздел (sale, services, repair, private)
     if (categoryGroups[type]) {
-        return ads.filter(ad => categoryGroups[type].includes(ad.category));
+        return ads.filter(ad => ad.section === type);
     }
 
     // Если это подкатегория (sport, pets, electronics…)
@@ -113,7 +120,9 @@ function renderAds(list) {
     });
 }
 
-/* ======    ПОИСК  =========== */
+/* ============================
+   ПОИСК
+============================ */
 
 function searchAds() {
     const query = document.getElementById("searchInput").value.toLowerCase();
