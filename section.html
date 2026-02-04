@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">Объявления Мерсин</div>
+
+    <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="categories.html">Категории</a>
+        <a href="create.html">Подать объявление</a>
+        <a href="login.html">Вход и регистрация</a>
+        <a href="profile.html">Личный кабинет</a>
+    </nav>
+</header>
+
+<section class="category-header">
+    <h2 id="sectionTitle">Раздел</h2>
+</section>
+
+<section class="categories">
+    <div id="sectionCategories" class="category-grid"></div>
+</section>
+
+<script src="assets/js/app.js"></script>
+
+<script>
+/* Получаем раздел из URL */
+const urlParams = new URLSearchParams(window.location.search);
+const sectionType = urlParams.get("type");
+
+/* Человеческие названия разделов */
+const sectionNames = {
+    sale: "Продажа",
+    services: "Услуги",
+    repair: "Ремонт",
+    private: "Частные объявления"
+};
+
+/* Человеческие названия категорий */
+const categoryNames = {
+    clothes: "Одежда, обувь, аксессуары",
+    home: "Для дома и быта",
+    sport: "Хобби и спорт",
+    auto: "Авто‑мото",
+    electronics: "Электроника",
+
+    beauty: "Красота и здоровье",
+    hair: "Парикмахер",
+    cosmetology: "Косметология",
+    epilation: "Эпиляция",
+    massage: "Массаж",
+
+    windows: "Остекление",
+    painting: "Покраска",
+    floors: "Полы",
+    plumbing: "Сантехника",
+    ac: "Кондиционеры",
+    electric: "Электрика",
+
+    transfer: "Трансфер и попутчики",
+    nanny: "Няня",
+    health: "Здоровье",
+    tours: "Экскурсии",
+    pets: "Животные"
+};
+
+/* Устанавливаем заголовок */
+document.getElementById("sectionTitle").innerText =
+    sectionNames[sectionType] || "Раздел";
+
+/* Получаем категории внутри раздела */
+const categories = categoryGroups[sectionType] || [];
+
+/* Контейнер */
+const container = document.getElementById("sectionCategories");
+
+/* Если раздел пустой */
+if (categories.length === 0) {
+    container.innerHTML = "<p>Категорий в этом разделе пока нет.</p>";
+} else {
+    categories.forEach(cat => {
+        const link = document.createElement("a");
+        link.className = "cat-item";
+        link.href = `category.html?type=${cat}`;
+        link.innerText = categoryNames[cat] || cat;
+        container.appendChild(link);
+    });
+}
+</script>
+
+</body>
+</html>
