@@ -15,89 +15,119 @@
     <nav class="nav">
         <a href="index.html">Главная</a>
         <a href="categories.html">Категории</a>
-        <a href="create.html">Подать объявление</a>
+        <a href="create.html" class="active">Подать объявление</a>
+        <a href="login.html">Вход и регистрация</a>
         <a href="profile.html">Личный кабинет</a>
     </nav>
 </header>
 
-<section class="form-section">
+<section class="category-header">
     <h2>Подать объявление</h2>
+</section>
 
+<section class="form-section">
     <form id="createForm" class="create-form">
 
-        <label>Категория</label>
-        <select id="category">
-            <option value="">Выберите категорию</option>
-
-            <optgroup label="Продажа">
-                <option value="clothes">Одежда, обувь, аксессуары</option>
-                <option value="home">Для дома и быта</option>
-                <option value="sport">Спорт</option>
-                <option value="auto">Авто‑мото</option>
-                <option value="electronics">Электроника</option>
-            </optgroup>
-
-            <optgroup label="Услуги">
-                <option value="beauty">Красота и здоровье</option>
-                <option value="hair">Парикмахер</option>
-                <option value="cosmetology">Косметология</option>
-                <option value="epilation">Эпиляция</option>
-                <option value="massage">Массаж</option>
-            </optgroup>
-
-            <optgroup label="Ремонт">
-                <option value="windows">Остекление</option>
-                <option value="painting">Покраска</option>
-                <option value="floors">Полы</option>
-                <option value="plumbing">Сантехника</option>
-                <option value="ac">Кондиционеры</option>
-                <option value="electric">Электрика</option>
-            </optgroup>
-
-            <optgroup label="Частные объявления">
-                <option value="transfer">Трансфер и попутчики</option>
-                <option value="nanny">Няня</option>
-                <option value="health">Здоровье</option>
-                <option value="tours">Экскурсии</option>
-                <option value="pets">Животные</option>
-            </optgroup>
+        <!-- Раздел -->
+        <label for="sectionSelect">Раздел:</label>
+        <select id="sectionSelect" required>
+            <option value="">Выберите раздел</option>
+            <option value="sale">Продажа</option>
+            <option value="services">Услуги</option>
+            <option value="repair">Ремонт</option>
+            <option value="private">Частные объявления</option>
         </select>
 
-        <label>Заголовок</label>
-        <input type="text" id="title" placeholder="Например: Велосипед горный">
+        <!-- Категория -->
+        <label for="categorySelect">Категория:</label>
+        <select id="categorySelect" required disabled>
+            <option value="">Сначала выберите раздел</option>
+        </select>
 
-        <label>Цена (TL)</label>
-        <input type="number" id="price" placeholder="Например: 4500">
+        <!-- Название -->
+        <label for="titleInput">Название объявления:</label>
+        <input type="text" id="titleInput" required>
 
-        <label>Описание</label>
-        <textarea id="description" rows="5" placeholder="Подробное описание товара или услуги"></textarea>
+        <!-- Цена -->
+        <label for="priceInput">Цена:</label>
+        <input type="text" id="priceInput" required>
 
-        <label>Фото (до 5 шт.)</label>
-        <input type="file" id="images" multiple accept="image/*">
+        <!-- Фото -->
+        <label for="imageInput">Фото (URL):</label>
+        <input type="text" id="imageInput" placeholder="https://...">
 
-        <button type="submit" class="ad-btn">Опубликовать</button>
+        <!-- Описание -->
+        <label for="descInput">Описание:</label>
+        <textarea id="descInput" rows="5" required></textarea>
+
+        <button type="submit" class="ad-btn">Создать объявление</button>
     </form>
-
-    <div id="resultMessage" class="result-message"></div>
 </section>
 
 <script src="assets/js/app.js"></script>
+
 <script>
-document.getElementById("createForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+/* Человеческие названия категорий */
+const categoryNames = {
+    clothes: "Одежда, обувь, аксессуары",
+    home: "Для дома и быта",
+    sport: "Хобби и спорт",
+    auto: "Авто‑мото",
+    electronics: "Электроника",
 
-    const title = document.getElementById("title").value.trim();
-    const category = document.getElementById("category").value.trim();
-    const price = document.getElementById("price").value.trim();
-    const description = document.getElementById("description").value.trim();
+    beauty: "Красота и здоровье",
+    hair: "Парикмахер",
+    cosmetology: "Косметология",
+    epilation: "Эпиляция",
+    massage: "Массаж",
 
-    if (!title || !category || !description) {
-        document.getElementById("resultMessage").innerText = "Заполните обязательные поля.";
+    windows: "Остекление",
+    painting: "Покраска",
+    floors: "Полы",
+    plumbing: "Сантехника",
+    ac: "Кондиционеры",
+    electric: "Электрика",
+
+    transfer: "Трансфер и попутчики",
+    nanny: "Няня",
+    health: "Здоровье",
+    tours: "Экскурсии",
+    pets: "Животные"
+};
+
+/* Элементы */
+const sectionSelect = document.getElementById("sectionSelect");
+const categorySelect = document.getElementById("categorySelect");
+
+/* При выборе раздела — подгружаем категории */
+sectionSelect.addEventListener("change", () => {
+    const section = sectionSelect.value;
+
+    categorySelect.innerHTML = "";
+    categorySelect.disabled = true;
+
+    if (!section || !categoryGroups[section]) {
+        categorySelect.innerHTML = `<option value="">Сначала выберите раздел</option>`;
         return;
     }
 
-    document.getElementById("resultMessage").innerText =
-        "Объявление сохранено локально (пока без сервера). Позже подключим базу.";
+    categorySelect.disabled = false;
+
+    categoryGroups[section].forEach(cat => {
+        const option = document.createElement("option");
+        option.value = cat;
+        option.textContent = categoryNames[cat] || cat;
+        categorySelect.appendChild(option);
+    });
+});
+
+/* Обработка формы */
+document.getElementById("createForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    alert("Объявление создано (пока без API).");
+
+    // Здесь позже будет отправка на сервер
 });
 </script>
 
