@@ -113,9 +113,7 @@ function renderAds(list) {
     });
 }
 
-/* ============================
-   ПОИСК
-============================ */
+/* ======    ПОИСК  =========== */
 
 function searchAds() {
     const query = document.getElementById("searchInput").value.toLowerCase();
