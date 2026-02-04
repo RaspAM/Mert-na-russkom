@@ -33,11 +33,33 @@ const ads = [
         description: "Сухой корм, 10 кг",
         category: "pets"
     }
+    {
+        id: 5,
+        title: "SAP Decathlon 10 1/2",
+        price: "950 TL",
+        image: "https://via.placeholder.com/300x200?text=SAP+Decathlon",
+        description: "Спортивная обувь SAP Decathlon, размер 10 1/2",
+        category: "sport"
+    },
+    {
+        id: 6,
+        title: "FIAT DOBLO Trekking 2022",
+        price: "485000 TL",
+        image: "https://via.placeholder.com/300x200?text=FIAT+DOBLO+2022",
+        description: "FIAT DOBLO Trekking, модель 2022 года, отличное состояние",
+        category: "auto"
+    },
+    {
+        id: 7,
+        title: "Косметолог с выездом на дом",
+        price: "500 TL",
+        image: "https://via.placeholder.com/300x200?text=Cosmetology",
+        description: "Макияж; окраска бровей и ресниц; коррекция формы бровей; наращивание ресниц; завивка ресниц; косметические маски; эстетический СПА‑массаж",
+        category: "cosmetology"
+    }
 ];
 
-/* ============================
-   ГРУППЫ КАТЕГОРИЙ (разделы)
-============================ */
+/* ===   ГРУППЫ КАТЕГОРИЙ (разделы)==== */
 
 const categoryGroups = {
     sale: ["clothes", "home", "sport", "auto", "electronics"],
