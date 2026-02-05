@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Категория</title>
+    <title>Категории</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -22,58 +22,49 @@
 </header>
 
 <section class="category-header">
-    <h2 id="categoryTitle">Категория</h2>
+    <h2>Категории</h2>
 </section>
 
-<section class="ads">
-    <div id="adsContainer" class="ads-grid"></div>
+<section class="categories">
+
+    <h3>Продажа</h3>
+    <div class="category-grid">
+        <a class="cat-item" href="category.html?type=clothes">Одежда, обувь, аксессуары</a>
+        <a class="cat-item" href="category.html?type=home">Для дома и быта</a>
+        <a class="cat-item" href="category.html?type=sport">Хобби и спорт</a>
+        <a class="cat-item" href="category.html?type=auto">Авто‑мото</a>
+        <a class="cat-item" href="category.html?type=electronics">Электроника</a>
+    </div>
+
+    <h3>Услуги</h3>
+    <div class="category-grid">
+        <a class="cat-item" href="category.html?type=beauty">Красота и здоровье</a>
+        <a class="cat-item" href="category.html?type=hair">Парикмахер</a>
+        <a class="cat-item" href="category.html?type=cosmetology">Косметология</a>
+        <a class="cat-item" href="category.html?type=epilation">Эпиляция</a>
+        <a class="cat-item" href="category.html?type=massage">Массаж</a>
+    </div>
+
+    <h3>Ремонт</h3>
+    <div class="category-grid">
+        <a class="cat-item" href="category.html?type=windows">Остекление</a>
+        <a class="cat-item" href="category.html?type=painting">Покраска</a>
+        <a class="cat-item" href="category.html?type=floors">Полы</a>
+        <a class="cat-item" href="category.html?type=plumbing">Сантехника</a>
+        <a class="cat-item" href="category.html?type=ac">Кондиционеры</a>
+        <a class="cat-item" href="category.html?type=electric">Электрика</a>
+    </div>
+
+    <h3>Частные объявления</h3>
+    <div class="category-grid">
+        <a class="cat-item" href="category.html?type=transfer">Трансфер и попутчики</a>
+        <a class="cat-item" href="category.html?type=nanny">Няня</a>
+        <a class="cat-item" href="category.html?type=health">Здоровье</a>
+        <a class="cat-item" href="category.html?type=tours">Экскурсии</a>
+        <a class="cat-item" href="category.html?type=pets">Животные</a>
+    </div>
+
 </section>
-
-<script src="assets/js/app.js" defer></script>
-
-<script>
-/* Получаем категорию из URL */
-const urlParams = new URLSearchParams(window.location.search);
-const categoryType = urlParams.get("type");
-
-/* Человеческие названия категорий */
-const categoryNames = {
-    clothes: "Одежда, обувь, аксессуары",
-    home: "Для дома и быта",
-    sport: "Хобби и спорт",
-    auto: "Авто‑мото",
-    electronics: "Электроника",
-
-    beauty: "Красота и здоровье",
-    hair: "Парикмахер",
-    cosmetology: "Косметология",
-    epilation: "Эпиляция",
-    massage: "Массаж",
-
-    windows: "Остекление",
-    painting: "Покраска",
-    floors: "Полы",
-    plumbing: "Сантехника",
-    ac: "Кондиционеры",
-    electric: "Электрика",
-
-    transfer: "Трансфер и попутчики",
-    nanny: "Няня",
-    health: "Здоровье",
-    tours: "Экскурсии",
-    pets: "Животные"
-};
-
-/* Заголовок */
-document.getElementById("categoryTitle").innerText =
-    categoryNames[categoryType] || "Категория";
-
-/* Фильтрация */
-const adsToShow = getAdsByCategory(categoryType);
-
-/* Отображение */
-renderAds(adsToShow);
-</script>
 
 </body>
 </html>
