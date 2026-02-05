@@ -90,7 +90,7 @@ if (categories.length === 0) {
     categories.forEach(cat => {
         const link = document.createElement("a");
         link.className = "cat-item";
-        link.href = `category.html?type=${cat}`;
+        link.href = `goods_category.html?type=${cat}`; 
         link.innerText = categoryNames[cat] || cat;
         container.appendChild(link);
     });
