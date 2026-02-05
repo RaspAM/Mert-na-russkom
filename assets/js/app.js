@@ -140,10 +140,10 @@ function searchAds() {
 ============================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-    // На главной странице показываем все объявления
-    if (document.getElementById("adsContainer")) {
-        renderAds(ads);
-    }
+    // Показывать все объявления только на главной странице
+if (window.location.pathname.includes("index.html")) {
+    renderAds(ads);
+}
 
     const searchBtn = document.getElementById("searchBtn");
     if (searchBtn) {
