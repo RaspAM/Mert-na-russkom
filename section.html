@@ -25,11 +25,8 @@
     <h2 id="sectionTitle">Раздел</h2>
 </section>
 
-<section class="categories">
-    <div id="sectionCategories" class="category-grid"></div>
-</section>
+<section class="categories" id="sectionContent"></section>
 
-<!-- ВАЖНО: app.js должен быть подключён ПЕРЕД нашим скриптом -->
 <script src="assets/js/app.js"></script>
 
 <script>
@@ -41,7 +38,6 @@ const sectionType = urlParams.get("type");
 const sectionNames = {
     sale: "Продажа",
     services: "Услуги",
-    repair: "Ремонт",
     private: "Частные объявления"
 };
 
@@ -53,7 +49,6 @@ const categoryNames = {
     auto: "Авто‑мото",
     electronics: "Электроника",
 
-    beauty: "Красота и здоровье",
     hair: "Парикмахер",
     cosmetology: "Косметология",
     epilation: "Эпиляция",
@@ -77,23 +72,60 @@ const categoryNames = {
 document.getElementById("sectionTitle").innerText =
     sectionNames[sectionType] || "Раздел";
 
-/* Получаем категории внутри раздела */
-const categories = categoryGroups[sectionType] || [];
-
 /* Контейнер */
-const container = document.getElementById("sectionCategories");
+const container = document.getElementById("sectionContent");
 
-/* Если раздел пустой */
-if (categories.length === 0) {
-    container.innerHTML = "<p>Категорий в этом разделе пока нет.</p>";
-} else {
-    categories.forEach(cat => {
-        const link = document.createElement("a");
-        link.className = "cat-item";
-        link.href = `goods_category.html?type=${cat}`; 
-        link.innerText = categoryNames[cat] || cat;
-        container.appendChild(link);
-    });
+/* Логика по разделам */
+if (sectionType === "sale") {
+    container.innerHTML = `
+        <h3>Категории</h3>
+        <div class="category-grid">
+            <a class="cat-item" href="goods_category.html?type=clothes">Одежда, обувь, аксессуары</a>
+            <a class="cat-item" href="goods_category.html?type=home">Для дома и быта</a>
+            <a class="cat-item" href="goods_category.html?type=sport">Хобби и спорт</a>
+            <a class="cat-item" href="goods_category.html?type=auto">Авто‑мото</a>
+            <a class="cat-item" href="goods_category.html?type=electronics">Электроника</a>
+        </div>
+    `;
+}
+
+else if (sectionType === "services") {
+    container.innerHTML = `
+        <h3>Красота и здоровье</h3>
+        <div class="category-grid">
+            <a class="cat-item" href="goods_category.html?type=hair">Парикмахер</a>
+            <a class="cat-item" href="goods_category.html?type=cosmetology">Косметология</a>
+            <a class="cat-item" href="goods_category.html?type=epilation">Эпиляция</a>
+            <a class="cat-item" href="goods_category.html?type=massage">Массаж</a>
+        </div>
+
+        <h3>Ремонт</h3>
+        <div class="category-grid">
+            <a class="cat-item" href="goods_category.html?type=windows">Остекление</a>
+            <a class="cat-item" href="goods_category.html?type=painting">Покраска</a>
+            <a class="cat-item" href="goods_category.html?type=floors">Полы</a>
+            <a class="cat-item" href="goods_category.html?type=plumbing">Сантехника</a>
+            <a class="cat-item" href="goods_category.html?type=ac">Кондиционеры</a>
+            <a class="cat-item" href="goods_category.html?type=electric">Электрика</a>
+        </div>
+    `;
+}
+
+else if (sectionType === "private") {
+    container.innerHTML = `
+        <h3>Категории</h3>
+        <div class="category-grid">
+            <a class="cat-item" href="goods_category.html?type=transfer">Трансфер и попутчики</a>
+            <a class="cat-item" href="goods_category.html?type=nanny">Няня</a>
+            <a class="cat-item" href="goods_category.html?type=health">Здоровье</a>
+            <a class="cat-item" href="goods_category.html?type=tours">Экскурсии</a>
+            <a class="cat-item" href="goods_category.html?type=pets">Животные</a>
+        </div>
+    `;
+}
+
+else {
+    container.innerHTML = "<p>Раздел не найден.</p>";
 }
 </script>
 
