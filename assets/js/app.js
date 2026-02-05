@@ -70,7 +70,13 @@ const ads = [
 
 const categoryGroups = {
     sale: ["clothes", "home", "sport", "auto", "electronics"],
-    services: ["beauty", "hair", "cosmetology", "epilation", "massage", "windows", "painting", "floors", "plumbing", "ac", "electric"],
+    services: [
+        // Красота и здоровье
+        "hair", "cosmetology", "epilation", "massage",
+
+        // Ремонт
+        "windows", "painting", "floors", "plumbing", "ac", "electric"],
+
     private: ["transfer", "nanny", "health", "tours", "pets"]
 };
 
