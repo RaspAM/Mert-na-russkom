@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Все категории</title>
+    <title>Категория</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -14,7 +14,7 @@
 
     <nav class="nav">
         <a href="index.html">Главная</a>
-        <a href="categories.html" class="active">Категории</a>
+        <a href="categories.html">Категории</a>
         <a href="create.html">Подать объявление</a>
         <a href="login.html">Вход и регистрация</a>
         <a href="profile.html">Личный кабинет</a>
@@ -22,26 +22,19 @@
 </header>
 
 <section class="category-header">
-    <h2>Все категории</h2>
+    <h2 id="categoryTitle">Категория</h2>
 </section>
 
-<section class="categories">
-
-    <!-- Контейнер для всех категорий -->
-    <div id="allCategories" class="category-sections"></div>
-
+<section class="ads">
+    <div id="adsContainer" class="ads-grid"></div>
 </section>
 
-<script src="assets/js/app.js"></script>
+<script src="assets/js/app.js" defer></script>
 
 <script>
-/* Человеческие названия разделов */
-const sectionNames = {
-    sale: "Продажа",
-    services: "Услуги",
-    repair: "Ремонт",
-    private: "Частные объявления"
-};
+/* Получаем категорию из URL */
+const urlParams = new URLSearchParams(window.location.search);
+const categoryType = urlParams.get("type");
 
 /* Человеческие названия категорий */
 const categoryNames = {
@@ -71,32 +64,15 @@ const categoryNames = {
     pets: "Животные"
 };
 
-/* Контейнер */
-const container = document.getElementById("allCategories");
+/* Заголовок */
+document.getElementById("categoryTitle").innerText =
+    categoryNames[categoryType] || "Категория";
 
-/* Генерация списка категорий по разделам */
-Object.keys(categoryGroups).forEach(section => {
+/* Фильтрация */
+const adsToShow = getAdsByCategory(categoryType);
 
-    const block = document.createElement("div");
-    block.className = "category-block";
-
-    block.innerHTML = `
-        <h3 class="category-section-title">${sectionNames[section]}</h3>
-        <div class="category-grid" id="grid-${section}"></div>
-    `;
-
-    container.appendChild(block);
-
-    const grid = document.getElementById(`grid-${section}`);
-
-    categoryGroups[section].forEach(cat => {
-        const link = document.createElement("a");
-        link.className = "cat-item";
-        link.href = `category.html?type=${cat}`;
-        link.innerText = categoryNames[cat] || cat;
-        grid.appendChild(link);
-    });
-});
+/* Отображение */
+renderAds(adsToShow);
 </script>
 
 </body>
