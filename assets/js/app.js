@@ -42,7 +42,7 @@ const ads = [
         title: "SUP Decathlon 10 1/2",
         price: "950 TL",
         image: "https://via.placeholder.com/300x200?text=SUP",
-        description: "надувной Б\У SAP Decathlon, размер 10 1/2",
+        description: "надувной Б/У SAP Decathlon, размер 10 1/2",
         category: "sport",
         section: "sale"
     },
@@ -70,12 +70,14 @@ const ads = [
 
 const categoryGroups = {
     sale: ["clothes", "home", "sport", "auto", "electronics"],
+
     services: [
         // Красота и здоровье
         "hair", "cosmetology", "epilation", "massage",
 
         // Ремонт
-        "windows", "painting", "floors", "plumbing", "ac", "electric"],
+        "windows", "painting", "floors", "plumbing", "ac", "electric"
+    ],
 
     private: ["transfer", "nanny", "health", "tours", "pets"]
 };
@@ -86,12 +88,12 @@ const categoryGroups = {
 
 function getAdsByCategory(type) {
 
-    // Если это раздел (sale, services, repair, private)
+    // Если это раздел (sale, services, private)
     if (categoryGroups[type]) {
         return ads.filter(ad => ad.section === type);
     }
 
-    // Если это подкатегория (sport, pets, electronics…)
+    // Если это категория
     return ads.filter(ad => ad.category === type);
 }
 
@@ -145,10 +147,9 @@ function searchAds() {
 ============================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Показывать все объявления только на главной странице
-if (window.location.pathname.includes("index.html")) {
-    renderAds(ads);
-}
+
+    // НИЧЕГО НЕ РЕНДЕРИМ автоматически!
+    // Главная страница НЕ должна показывать товары.
 
     const searchBtn = document.getElementById("searchBtn");
     if (searchBtn) {
