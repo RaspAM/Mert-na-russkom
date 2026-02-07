@@ -124,7 +124,15 @@ else if (sectionType === "private") {
         </div>
     `;
 }
-
+    else if (sectionType === "realty") {
+        container.innerHTML = `
+            <h3>Недвижимость</h3>
+            <div class="category-grid">
+                <a class="cat-item" href="goods_category.html?type=realty_sale">Продается</a>
+                <a class="cat-item" href="goods_category.html?type=realty_rent">Аренда</a>
+        </div>
+    `;
+}
 else {
     container.innerHTML = "<p>Раздел не найден.</p>";
 }
