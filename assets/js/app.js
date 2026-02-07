@@ -103,10 +103,39 @@ const ads = [
         category: "transfer",
         section: "private"
     }
+    /* === НЕДВИЖИМОСТЬ — АРЕНДА === */
+
+    {
+        id: 12,
+        title: "Сдам просторную 1+1 в Тэдже (5 чел.)",
+        price: "350$ / месяц",
+        image: "https://via.placeholder.com/300x200?text=Realty+Rent",
+        description: "Просторная 1+1, полностью укомплектована. Море 250 м. Барбекю, бассейн, парковка. От собственника.",
+        category: "realty_rent",
+        section: "realty"
+    },
+    {
+        id: 13,
+        title: "Сдам 1+1 в Тедже (краткосрочно и длительно)",
+        price: "от 300$ / месяц",
+        image: "https://via.placeholder.com/300x200?text=Realty+Rent",
+        description: "1+1, новая мебель Arçelik, 500 м до моря. 2 кондиционера. Генератор. Цена от 300$ + коммуналка.",
+        category: "realty_rent",
+        section: "realty"
+    },
+
+    /* === НЕДВИЖИМОСТЬ — ПРОДАЖА === */
+    {
+        id: 14,
+        title: "Продаю 1+1 с видом на море (Чешмели)",
+        price: "51000 €",
+        image: "https://via.placeholder.com/300x200?text=Realty+Sale",
+        description: "1+1, вид на море, 100 м до пляжа. Новый дом, 8/12. Бассейн, парковка, барбекю. Тапу и Искан получены.",
+        category: "realty_sale",
+        section: "realty"
+    }
 ];
-
 /* === ГРУППЫ КАТЕГОРИЙ (разделы) === */
-
 const categoryGroups = {
     sale: ["clothes", "home", "sport", "auto", "electronics"],
     services: [
