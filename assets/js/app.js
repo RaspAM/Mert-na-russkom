@@ -109,15 +109,16 @@ const ads = [
 
 const categoryGroups = {
     sale: ["clothes", "home", "sport", "auto", "electronics"],
-
     services: [
         // Красота и здоровье
         "hair", "cosmetology", "epilation", "massage",
-
         // Ремонт
         "windows", "painting", "floors", "plumbing", "ac", "electric"
     ],
-
+    realty: [
+        "realty_sale",
+        "realty_rent"
+    ],
     private: ["transfer", "nanny", "health", "tours", "pets"]
 };
 
